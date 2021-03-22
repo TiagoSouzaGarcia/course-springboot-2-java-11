@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_user")
 public class User implements Serializable{
@@ -25,6 +27,14 @@ public class User implements Serializable{
 	private String phone;
 	private String password;
 	
+	/* @JsonIgnore
+	 * Restricao a chamadas em looping pelo uso da biblioteca Jackson. Como ambos os
+	 * lados estão associados é necessário restringi-lo. Retirando @JsonIgnore e
+	 * inserindo a anotação na classe Order, e, mantendo em application.properties
+	 * spring.jpa.open-in-view= o valor true é possível retornar na JSON as ordens
+	 * associadas a clientes.
+	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "client")
 	private List<Order> orders = new ArrayList<>();
 	
