@@ -31,7 +31,7 @@ public class User implements Serializable{
 	 * Restricao a chamadas em looping pelo uso da biblioteca Jackson. Como ambos os
 	 * lados estão associados é necessário restringi-lo. Retirando @JsonIgnore e
 	 * inserindo a anotação na classe Order, e, mantendo em application.properties
-	 * spring.jpa.open-in-view= o valor true é possível retornar na JSON as ordens
+	 * spring.jpa.open-in-view=true é possível retornar na JSON as ordens
 	 * associadas a clientes.
 	 */
 	@JsonIgnore
